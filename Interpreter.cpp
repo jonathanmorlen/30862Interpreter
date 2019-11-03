@@ -11,6 +11,9 @@
 
 constexpr auto inputFilename = "input.txt";
 
+// This is a test
+// Testing
+
 int main()
 {
 	// Initialize counters and pointers
