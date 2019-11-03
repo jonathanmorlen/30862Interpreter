@@ -20,11 +20,11 @@ public:
 	static std::vector<Value> runtimeStack;
 	static std::vector<Value> framePointerStack;
 	static std::vector<unsigned char> programMemory;
-	
+
 	// Methods
 	int execute(int);
 	friend std::ostream& operator<<(std::ostream& os, const ByteCode& byteCode);
-	
+
 private:
 	static void printStack(std::vector<Value> vec);
 };

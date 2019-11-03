@@ -3,7 +3,7 @@
 
 #include "MemoryObject.h"
 
-class Value : public MemoryObject
+class Value: public MemoryObject
 {
 public:
 	// Constructor(s) and Destructor(s)
@@ -20,7 +20,7 @@ public:
 		SHORT = 2,
 		INT = 3,
 		FLOAT = 4
-	}type;	
+	} type;
 
 	// Methods
 	char getChar();
@@ -35,5 +35,4 @@ private:
 	short shortValue;
 	int intValue;
 	float floatValue;
-	
 };

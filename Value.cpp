@@ -8,6 +8,7 @@ Value::Value(const char c)
 	floatValue = 0;
 	type = CHAR;
 }
+
 Value::Value(const short c)
 {
 	charValue = 0;
@@ -16,6 +17,7 @@ Value::Value(const short c)
 	floatValue = 0;
 	type = SHORT;
 }
+
 Value::Value(const int c)
 {
 	charValue = 0;
@@ -24,6 +26,7 @@ Value::Value(const int c)
 	floatValue = 0;
 	type = INT;
 }
+
 Value::Value(const float c)
 {
 	charValue = 0;
@@ -59,26 +62,25 @@ int Value::getValue()
 	int basicValue = 0;
 	if (this->type == CHAR)
 	{
-		basicValue = static_cast<int>(this->getChar());
-	}
-	else if(this->type == SHORT)
-	{
-		basicValue = static_cast<int>(this->getShort());
-	}
-	else if (this->type == INT)
-	{
-		basicValue = this->getInt();
+		basicValue = static_cast<int>(this->getChar( ));
 	}
 	else if (this->type == SHORT)
 	{
-		basicValue = static_cast<int>(this->getFloat());
+		basicValue = static_cast<int>(this->getShort( ));
+	}
+	else if (this->type == INT)
+	{
+		basicValue = this->getInt( );
+	}
+	else if (this->type == SHORT)
+	{
+		basicValue = static_cast<int>(this->getFloat( ));
 	}
 	return basicValue;
 }
 
-
 std::ostream& operator<<(std::ostream& os, Value& value)
 {
-	os << value.getValue();
+	os << value.getValue( );
 	return os;
 }

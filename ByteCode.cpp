@@ -22,11 +22,12 @@ int ByteCode::execute(int programCounter)
 	// Halt [00000000]
 	if (byteCode == 0)
 	{
-		std::cout << "Program Counter: " << programCounter << "/" << programMemory.size(  ) - 1 << std::endl << std::endl;
+		std::cout << "Program Counter: " << programCounter << "/" << programMemory.size( ) - 1 << std::endl << std::
+				endl;
 		std::cout << "Stack Pointer: " << runtimeStackPointer << std::endl;
 		std::cout << "Runtime Stack:" << std::endl;
 		printStack(runtimeStack);
-		std::cout << std::endl << std::endl;;
+		std::cout << std::endl << std::endl;
 		std::cout << "Frame Pointer Stack Pointer: " << framePointerStackPointer << std::endl;
 		std::cout << "Frame Pointer Stack: " << std::endl;
 		printStack(framePointerStack);
@@ -112,7 +113,7 @@ int ByteCode::execute(int programCounter)
 	if (byteCode == 69)
 	{
 		short shortValue;
-		unsigned char bytes[] = 
+		unsigned char bytes[] =
 		{
 			programMemory[programCounter + 1],
 			programMemory[programCounter + 2]
@@ -130,7 +131,7 @@ int ByteCode::execute(int programCounter)
 	if (byteCode == 70)
 	{
 		int intValue;
-		unsigned char bytes[] = 
+		unsigned char bytes[] =
 		{
 			programMemory[programCounter + 1],
 			programMemory[programCounter + 2],
@@ -150,7 +151,7 @@ int ByteCode::execute(int programCounter)
 	if (byteCode == 71)
 	{
 		float floatValue;
-		unsigned char bytes[] = 
+		unsigned char bytes[] =
 		{
 			programMemory[programCounter + 1],
 			programMemory[programCounter + 2],
@@ -170,9 +171,9 @@ int ByteCode::execute(int programCounter)
 	if (byteCode == 72)
 	{
 		runtimeStack.emplace_back(Value(runtimeStack[framePointerStack[framePointerStackPointer].getInt( ) +
-			runtimeStack[runtimeStackPointer].getInt( ) + 1]));
+			                                runtimeStack[runtimeStackPointer].getInt( ) + 1]));
 		runtimeStackPointer++;
-		
+
 		return ++programCounter;
 	}
 
@@ -418,10 +419,10 @@ void ByteCode::printStack(std::vector<Value> vec)
 	std::cout << '[';
 	if (!vec.empty( ))
 	{
-		for (long long i = 0; i < vec.size(  ); i++)
+		for (long long i = 0; i < vec.size( ); i++)
 		{
 			std::cout << vec[i];
-			if (i + 1 != vec.size(  ))
+			if (i + 1 != vec.size( ))
 			{
 				std::cout << ", ";
 			}
