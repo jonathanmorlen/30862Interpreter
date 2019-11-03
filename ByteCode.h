@@ -9,7 +9,7 @@ class ByteCode: public MemoryObject
 {
 public:
 	// Constructor(s) and Destructor(s)
-	ByteCode(char);
+	ByteCode(int);
 	virtual ~ByteCode() = default;
 
 	// Variables

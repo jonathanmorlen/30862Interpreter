@@ -5,11 +5,11 @@ class MemoryObject
 {
 public:
 	// Constructor(s) and Destructor(s)
-	MemoryObject(int);
+	explicit MemoryObject(int val = 0);
 	virtual ~MemoryObject() = default;
 	
 	// Variables
-	char value;
+	int value;
 	
 	// Methods
 	friend std::ostream & operator<<(std::ostream &os, const MemoryObject &memObj);

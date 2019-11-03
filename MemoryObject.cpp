@@ -1,13 +1,7 @@
 #include "MemoryObject.h"
 #include <iostream>
 
-MemoryObject::MemoryObject(int c)
+MemoryObject::MemoryObject(const int val)
 {
-	value = c;
-}
-
-std::ostream& operator<<(std::ostream& os, const MemoryObject& memObj)
-{
-	os << " MO(" << memObj.value << ")";
-	return os;
+	value = val;
 }

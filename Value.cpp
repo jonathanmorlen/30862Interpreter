@@ -1,48 +1,84 @@
 #include "Value.h"
 
-Value::Value(char c) : MemoryObject(c)
+Value::Value(const char c)
 {
-	value = c;
-	valueTag type = CHAR;
+	charValue = c;
+	shortValue = 0;
+	intValue = 0;
+	floatValue = 0;
+	type = CHAR;
 }
-Value::Value(short c) : MemoryObject(c)
+Value::Value(const short c)
 {
-	value = c;
-	valueTag type = SHORT;
+	charValue = 0;
+	shortValue = c;
+	intValue = 0;
+	floatValue = 0;
+	type = SHORT;
 }
-Value::Value(int c) : MemoryObject(c)
+Value::Value(const int c)
 {
-	value = c;
-	valueTag type = INT;
+	charValue = 0;
+	shortValue = 0;
+	intValue = c;
+	floatValue = 0;
+	type = INT;
 }
-Value::Value(float c) : MemoryObject(c)
+Value::Value(const float c)
 {
-	value = c;
-	valueTag type = FLOAT;
+	charValue = 0;
+	shortValue = 0;
+	intValue = 0;
+	floatValue = c;
+	type = FLOAT;
 }
 
 char Value::getChar()
 {
-	return 0;
+	return charValue;
 }
 
 short Value::getShort()
 {
-	return 0;
+	return shortValue;
 }
 
 int Value::getInt()
 {
-	return 0;
+	return intValue;
 }
 
 float Value::getFloat()
 {
-	return 0.0f;
+	return floatValue;
 }
 
-std::ostream& operator<<(std::ostream& os, const Value& value)
+// For use when using value to hold addresses just in case
+int Value::getValue()
 {
-	os << "V(" << value.value << ")";
+	int basicValue = 0;
+	if (this->type == CHAR)
+	{
+		basicValue = static_cast<int>(this->getChar());
+	}
+	else if(this->type == SHORT)
+	{
+		basicValue = static_cast<int>(this->getShort());
+	}
+	else if (this->type == INT)
+	{
+		basicValue = this->getInt();
+	}
+	else if (this->type == SHORT)
+	{
+		basicValue = static_cast<int>(this->getFloat());
+	}
+	return basicValue;
+}
+
+
+std::ostream& operator<<(std::ostream& os, Value& value)
+{
+	os << value.getValue();
 	return os;
 }

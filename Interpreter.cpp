@@ -9,20 +9,16 @@
 #include "ByteCode.h"
 #include "Value.h"
 
-constexpr auto inputFilename = "input.txt";
-
-int main()
+int main(const int argc, char* argv[])
 {
-	// Initialize counters and pointers
-	int programCounter = 0;
-	int runtimeStackPointer = -1;
-	int framePointerStackPointer = -1;
-
-	// Initialize stacks
-	std::vector<Value> runtimeStack;
-	std::vector<Value> framePointerStack;
-	std::vector<unsigned char> programMemory;
-
+	// Get filename from command line
+	if(argc == 1)
+	{
+		std::cout << "Must pass a program filename to the interpreter." << std::endl;
+		exit(EXIT_FAILURE);
+	}
+	char* inputFilename = argv[1];
+	
 	// Read input file
 	std::ifstream inputFile;
 	inputFile.open(inputFilename);
@@ -31,25 +27,28 @@ int main()
 	if(!inputFile)
 	{
 		std::cerr << "Cannot open file: " << inputFilename << std::endl;
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 	char byte;
+
+	// Read bytes into memory
+	std::vector<unsigned char> programMemory;
 	while (inputFile.read(&byte, 1))
 	{
 		programMemory.push_back(byte);
 	}
 	inputFile.close();
 
-	// Initialize ByteCode variables to be used in execute()
-	ByteCode::framePointerStackPointer = framePointerStackPointer;
-	ByteCode::runtimeStackPointer = runtimeStackPointer;
-	ByteCode::runtimeStack = runtimeStack;
-	ByteCode::framePointerStack = framePointerStack;
+	// Initialize ByteCode variables and data structures to be used in execute()
+	ByteCode::framePointerStackPointer = -1;
+	ByteCode::runtimeStackPointer = -1;
+	ByteCode::runtimeStack = std::vector<Value>();
+	ByteCode::framePointerStack = std::vector<Value>();
 	ByteCode::programMemory = programMemory;
 	
 	// Run the program
-	bool continueExecution = true;
-	while(continueExecution)
+	int programCounter = 0;
+	while(true)
 	{
 		programCounter = ByteCode(programMemory[programCounter]).execute(programCounter);
 	}	
