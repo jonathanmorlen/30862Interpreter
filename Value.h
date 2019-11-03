@@ -14,22 +14,26 @@ public:
 	~Value() = default;
 
 	// Variables
-	enum valueTag
+	enum ValueTag
 	{
 		CHAR = 1,
 		SHORT = 2,
 		INT = 3,
 		FLOAT = 4
-	};
-
-	int value;
-	
+	}type;	
 
 	// Methods
 	char getChar();
 	short getShort();
 	int getInt();
 	float getFloat();
-	friend std::ostream& operator<<(std::ostream& os, const Value& value);
+	int getValue();
+	friend std::ostream& operator<<(std::ostream& os, Value& value);
+
+private:
+	char charValue;
+	short shortValue;
+	int intValue;
+	float floatValue;
 	
 };

@@ -44,4 +44,36 @@
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="36_jmp_test.smp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="40_jmpc_test.smp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="75_pushvf_test.smp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="100_add_test.smp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="104_sub_test.smp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="108_mul_test.smp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="112_div_test.smp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="132_cmpe_test.smp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="136_cmplt_test.smp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="140_cmpgt_test.smp">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>
