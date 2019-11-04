@@ -53,6 +53,10 @@ int ByteCode::execute(int programCounter)
 		{
 			programCounter = runtimeStack[runtimeStackPointer].getInt( );
 		}
+		else
+		{
+			programCounter++;
+		}
 
 		runtimeStack.pop_back( );
 		runtimeStack.pop_back( );
@@ -205,7 +209,16 @@ int ByteCode::execute(int programCounter)
 	// popm [01001100]
 	if (byteCode == 76)
 	{
-		runtimeStackPointer -= runtimeStack[runtimeStackPointer].getInt( ) + 1;
+		// Pop off number of entries to pop
+		int entriesToPop = runtimeStack.back().getValue(  );
+		runtimeStack.pop_back();
+		runtimeStackPointer--;
+		
+		for(int i = 0; i < entriesToPop; i++)
+		{
+			runtimeStack.pop_back();
+			runtimeStackPointer--;
+		}
 		return ++programCounter;
 	}
 
@@ -247,8 +260,10 @@ int ByteCode::execute(int programCounter)
 	// popv [01010000]
 	if (byteCode == 80)
 	{
-		runtimeStack[framePointerStack[framePointerStackPointer].getInt( ) + runtimeStack[runtimeStackPointer].
-			getInt( ) + 1] = runtimeStack[runtimeStackPointer];
+		runtimeStack[framePointerStack[framePointerStackPointer].getValue( ) + runtimeStack[runtimeStackPointer].
+			getValue( ) + 1] = runtimeStack[runtimeStackPointer - 1];
+		runtimeStack.pop_back();
+		runtimeStack.pop_back();
 		runtimeStackPointer -= 2;
 		return ++programCounter;
 	}
