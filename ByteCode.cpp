@@ -22,7 +22,7 @@ int ByteCode::execute(int programCounter)
 	// Halt [00000000]
 	if (byteCode == 0)
 	{
-		std::cout << "Program Counter: " << programCounter << "/" << programMemory.size( ) - 1 << std::endl << std::
+		std::cout << std::endl << "Program Counter: " << programCounter << "/" << programMemory.size( ) - 1 << std::endl << std::
 				endl;
 		std::cout << "Stack Pointer: " << runtimeStackPointer << std::endl;
 		std::cout << "Runtime Stack:" << std::endl;
@@ -73,9 +73,8 @@ int ByteCode::execute(int programCounter)
 		runtimeStack.pop_back();
 		runtimeStackPointer--;
 
-		// Address of first instruction of function. Read in as decimal, converted to hex		
+		// Address of first instruction of function		
 		programCounter = runtimeStack[runtimeStackPointer].getInt();
-		programCounter = 23;
 
 		runtimeStack.pop_back( );
 		runtimeStackPointer--;
@@ -213,26 +212,34 @@ int ByteCode::execute(int programCounter)
 	// popa [01001101]
 	if (byteCode == 77)
 	{
+		// Set and pop off number of elements to save
 		unsigned int numElementsToKeep = runtimeStack.back().getInt();
+		runtimeStack.pop_back();
+		runtimeStackPointer--;
 
 		// Pop numElementsToKeep from runtimeStack to framePointerStack to save them
 		for(unsigned int i = 0; i < numElementsToKeep; i++)
 		{
 			framePointerStack.emplace_back(runtimeStack.back());
 			runtimeStack.pop_back();
+			runtimeStackPointer--;
 		}
 
 		// Empty runtimeStack
-		while(!runtimeStack.empty(  ))
+		while(runtimeStackPointer != framePointerStack.back(  ).getValue(  ))
 		{
 			runtimeStack.pop_back();
+			runtimeStackPointer--;
 		}
 
 		// Restore numElements from framePointerStack to runtimeStack
 		for(unsigned int i = 0; i < numElementsToKeep; i++)
 		{
 			runtimeStack.emplace_back(framePointerStack.back());
+			runtimeStackPointer++;
+			
 			framePointerStack.pop_back();
+			framePointerStackPointer--;
 		}
 		return ++programCounter;
 	}
