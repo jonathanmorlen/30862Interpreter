@@ -175,6 +175,14 @@
     <None Include="36_jmp_test.smp" />
     <None Include="40_jmpc_test.smp" />
     <None Include="75_pushvf_test.smp" />
+    <None Include="Basics.bin" />
+    <None Include="Comparisons.bin" />
+    <None Include="Interpreter_Input.bin" />
+    <None Include="Jumps.bin" />
+    <None Include="Math.bin" />
+    <None Include="Peek_Poke.bin" />
+    <None Include="Push_Pop.bin" />
+    <None Include="Subroutines.bin" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

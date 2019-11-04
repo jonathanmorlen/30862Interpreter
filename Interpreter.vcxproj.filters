@@ -75,5 +75,29 @@
     <None Include="140_cmpgt_test.smp">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="Basics.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Comparisons.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Interpreter_Input.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Jumps.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Math.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Peek_Poke.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Push_Pop.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Subroutines.bin">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

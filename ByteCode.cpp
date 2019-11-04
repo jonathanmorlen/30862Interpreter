@@ -73,10 +73,9 @@ int ByteCode::execute(int programCounter)
 		runtimeStack.pop_back();
 		runtimeStackPointer--;
 
-		// Address of first instruction of function. Read in as decimal, converted to hex
-		int address = runtimeStack[runtimeStackPointer].getInt();
-		std::cout << address << std::endl;
-		programCounter = address;
+		// Address of first instruction of function. Read in as decimal, converted to hex		
+		programCounter = runtimeStack[runtimeStackPointer].getInt();
+		programCounter = 23;
 
 		runtimeStack.pop_back( );
 		runtimeStackPointer--;
@@ -217,7 +216,7 @@ int ByteCode::execute(int programCounter)
 		unsigned int numElementsToKeep = runtimeStack.back().getInt();
 
 		// Pop numElementsToKeep from runtimeStack to framePointerStack to save them
-		for(int i = 0; i < numElementsToKeep; i++)
+		for(unsigned int i = 0; i < numElementsToKeep; i++)
 		{
 			framePointerStack.emplace_back(runtimeStack.back());
 			runtimeStack.pop_back();
@@ -230,7 +229,7 @@ int ByteCode::execute(int programCounter)
 		}
 
 		// Restore numElements from framePointerStack to runtimeStack
-		for(int i = 0; i < numElementsToKeep; i++)
+		for(unsigned int i = 0; i < numElementsToKeep; i++)
 		{
 			runtimeStack.emplace_back(framePointerStack.back());
 			framePointerStack.pop_back();
@@ -297,7 +296,7 @@ int ByteCode::execute(int programCounter)
 	}
 
 	// pokes [01100001]
-	if (byteCode == 88)
+	if (byteCode == 89)
 	{
 		runtimeStack[framePointerStack[framePointerStackPointer].getInt( ) + runtimeStack[runtimeStackPointer].
 					getInt( ) + 1] =
@@ -307,7 +306,7 @@ int ByteCode::execute(int programCounter)
 	}
 
 	// pokei [01100010]
-	if (byteCode == 88)
+	if (byteCode == 90)
 	{
 		runtimeStack[framePointerStack[framePointerStackPointer].getInt( ) + runtimeStack[runtimeStackPointer].
 					getInt( ) + 1] =
@@ -317,7 +316,7 @@ int ByteCode::execute(int programCounter)
 	}
 
 	// pokef [01100011]
-	if (byteCode == 88)
+	if (byteCode == 91)
 	{
 		runtimeStack[framePointerStack[framePointerStackPointer].getInt( ) + runtimeStack[runtimeStackPointer].
 					getInt( ) + 1] =
@@ -338,41 +337,243 @@ int ByteCode::execute(int programCounter)
 	// add [01100100]
 	if (byteCode == 100)
 	{
-		runtimeStack[runtimeStackPointer - 1] = runtimeStack[runtimeStackPointer - 1].getFloat( ) + runtimeStack[
-			runtimeStackPointer].getInt( );
+		if(runtimeStack.back(  ).type == Value::CHAR)
+		{
+			char operandA = runtimeStack[runtimeStackPointer].getChar();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			char operandB = runtimeStack[runtimeStackPointer].getChar();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+			
+			runtimeStack.emplace_back(Value(operandA + operandB));
+			runtimeStackPointer++;
+		}
+		else if (runtimeStack.back().type == Value::SHORT)
+		{
+			short operandA = runtimeStack[runtimeStackPointer].getShort();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			short operandB = runtimeStack[runtimeStackPointer].getShort();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			runtimeStack.emplace_back(Value(operandA + operandB));
+			runtimeStackPointer++;
+		}
+		else if (runtimeStack.back().type == Value::INT)
+		{
+			int operandA = runtimeStack[runtimeStackPointer].getInt();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			int operandB = runtimeStack[runtimeStackPointer].getInt();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			runtimeStack.emplace_back(Value(operandA + operandB));
+			runtimeStackPointer++;
+		}
+		else if (runtimeStack.back().type == Value::FLOAT)
+		{
+			float operandA = runtimeStack[runtimeStackPointer].getFloat();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			float operandB = runtimeStack[runtimeStackPointer].getFloat();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			runtimeStack.emplace_back(Value(operandA + operandB));
+			runtimeStackPointer++;
+		}
 		return ++programCounter;
 	}
 
 	// sub [01101000]
 	if (byteCode == 104)
 	{
-		runtimeStack[runtimeStackPointer - 1] = runtimeStack[runtimeStackPointer - 1].getFloat( ) - runtimeStack[
-			runtimeStackPointer].getInt( );
+		if (runtimeStack.back().type == Value::CHAR)
+		{
+			char operandA = runtimeStack[runtimeStackPointer].getChar();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			char operandB = runtimeStack[runtimeStackPointer].getChar();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			runtimeStack.emplace_back(Value(operandB - operandA));
+			runtimeStackPointer++;
+		}
+		else if (runtimeStack.back().type == Value::SHORT)
+		{
+			short operandA = runtimeStack[runtimeStackPointer].getShort();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			short operandB = runtimeStack[runtimeStackPointer].getShort();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			runtimeStack.emplace_back(Value(operandB - operandA));
+			runtimeStackPointer++;
+		}
+		else if (runtimeStack.back().type == Value::INT)
+		{
+			int operandA = runtimeStack[runtimeStackPointer].getInt();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			int operandB = runtimeStack[runtimeStackPointer].getInt();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			runtimeStack.emplace_back(Value(operandB - operandA));
+			runtimeStackPointer++;
+		}
+		else if (runtimeStack.back().type == Value::FLOAT)
+		{
+			float operandA = runtimeStack[runtimeStackPointer].getFloat();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			float operandB = runtimeStack[runtimeStackPointer].getFloat();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			runtimeStack.emplace_back(Value(operandB - operandA));
+			runtimeStackPointer++;
+		}
 		return ++programCounter;
 	}
 
 	// mul [01101100]
 	if (byteCode == 108)
 	{
-		runtimeStack[runtimeStackPointer - 1] = runtimeStack[runtimeStackPointer - 1].getFloat( ) * runtimeStack[
-			runtimeStackPointer].getInt( );
+		if (runtimeStack.back().type == Value::CHAR)
+		{
+			char operandA = runtimeStack[runtimeStackPointer].getChar();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			char operandB = runtimeStack[runtimeStackPointer].getChar();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			runtimeStack.emplace_back(Value(operandA * operandB));
+			runtimeStackPointer++;
+		}
+		else if (runtimeStack.back().type == Value::SHORT)
+		{
+			short operandA = runtimeStack[runtimeStackPointer].getShort();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			short operandB = runtimeStack[runtimeStackPointer].getShort();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			runtimeStack.emplace_back(Value(operandA * operandB));
+			runtimeStackPointer++;
+		}
+		else if (runtimeStack.back().type == Value::INT)
+		{
+			int operandA = runtimeStack[runtimeStackPointer].getInt();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			int operandB = runtimeStack[runtimeStackPointer].getInt();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			runtimeStack.emplace_back(Value(operandA * operandB));
+			runtimeStackPointer++;
+		}
+		else if (runtimeStack.back().type == Value::FLOAT)
+		{
+			float operandA = runtimeStack[runtimeStackPointer].getFloat();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			float operandB = runtimeStack[runtimeStackPointer].getFloat();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			runtimeStack.emplace_back(Value(operandA * operandB));
+			runtimeStackPointer++;
+		}
 		return ++programCounter;
 	}
 
 	// div [01110000]
 	if (byteCode == 112)
 	{
-		runtimeStack[runtimeStackPointer - 1] = runtimeStack[runtimeStackPointer - 1].getFloat( ) / runtimeStack[
-			runtimeStackPointer].getInt( );
+		if (runtimeStack.back().type == Value::CHAR)
+		{
+			char operandA = runtimeStack[runtimeStackPointer].getChar();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			char operandB = runtimeStack[runtimeStackPointer].getChar();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			runtimeStack.emplace_back(Value(operandB / operandA));
+			runtimeStackPointer++;
+		}
+		else if (runtimeStack.back().type == Value::SHORT)
+		{
+			short operandA = runtimeStack[runtimeStackPointer].getShort();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			short operandB = runtimeStack[runtimeStackPointer].getShort();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			runtimeStack.emplace_back(Value(operandB / operandA));
+			runtimeStackPointer++;
+		}
+		else if (runtimeStack.back().type == Value::INT)
+		{
+			int operandA = runtimeStack[runtimeStackPointer].getInt();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			int operandB = runtimeStack[runtimeStackPointer].getInt();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			runtimeStack.emplace_back(Value(operandB / operandA));
+			runtimeStackPointer++;
+		}
+		else if (runtimeStack.back().type == Value::FLOAT)
+		{
+			float operandA = runtimeStack[runtimeStackPointer].getFloat();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			float operandB = runtimeStack[runtimeStackPointer].getFloat();
+			runtimeStackPointer--;
+			runtimeStack.pop_back();
+
+			runtimeStack.emplace_back(Value(operandB / operandA));
+			runtimeStackPointer++;
+		}
 		return ++programCounter;
 	}
 
 	// cmpe [10000100]
 	if (byteCode == 132)
 	{
-		const Value equal = Value(runtimeStack[runtimeStackPointer - 1].getFloat( ) == runtimeStack[
-			                          runtimeStackPointer].getFloat( ));
-		runtimeStack[runtimeStackPointer - 1] = equal;
+		const Value equal = Value(runtimeStack[runtimeStackPointer - 1].getValue( ) == runtimeStack[
+			                          runtimeStackPointer].getValue( ));
+		runtimeStack.pop_back();
+		runtimeStack.pop_back();
+		runtimeStack.emplace_back(equal);
 		runtimeStackPointer--;
 		return ++programCounter;
 	}
@@ -380,9 +581,11 @@ int ByteCode::execute(int programCounter)
 	// cmplt [10001000]
 	if (byteCode == 136)
 	{
-		const Value lessThan = Value(runtimeStack[runtimeStackPointer - 1].getFloat( ) < runtimeStack[
-			                             runtimeStackPointer].getFloat( ));
-		runtimeStack[runtimeStackPointer - 1] = lessThan;
+		const Value lessThan = Value(runtimeStack[runtimeStackPointer - 1].getValue( ) < runtimeStack[
+			                             runtimeStackPointer].getValue( ));
+		runtimeStack.pop_back();
+		runtimeStack.pop_back();
+		runtimeStack.emplace_back(lessThan);
 		runtimeStackPointer--;
 		return ++programCounter;
 	}
@@ -390,9 +593,11 @@ int ByteCode::execute(int programCounter)
 	// cmpgt [10001100]
 	if (byteCode == 140)
 	{
-		const Value greaterThan = Value(runtimeStack[runtimeStackPointer - 1].getFloat( ) > runtimeStack[
-			                                runtimeStackPointer].getFloat( ));
-		runtimeStack[runtimeStackPointer - 1] = greaterThan;
+		const Value greaterThan = Value(runtimeStack[runtimeStackPointer - 1].getValue( ) > runtimeStack[
+			                                runtimeStackPointer].getValue( ));
+		runtimeStack.pop_back();
+		runtimeStack.pop_back();
+		runtimeStack.emplace_back(greaterThan);
 		runtimeStackPointer--;
 		return ++programCounter;
 	}
@@ -400,7 +605,7 @@ int ByteCode::execute(int programCounter)
 	// printc [10010000]
 	if (byteCode == 144)
 	{
-		std::cout << runtimeStack[runtimeStackPointer--].getInt( ) << std::endl;
+		std::cout << runtimeStack[runtimeStackPointer--].getValue( ) << std::endl;
 		runtimeStack.pop_back( );
 		return ++programCounter;
 	}
@@ -408,7 +613,7 @@ int ByteCode::execute(int programCounter)
 	// prints [10010001]
 	if (byteCode == 145)
 	{
-		std::cout << runtimeStack[runtimeStackPointer--].getShort( ) << std::endl;
+		std::cout << runtimeStack[runtimeStackPointer--].getValue( ) << std::endl;
 		runtimeStack.pop_back( );
 		return ++programCounter;
 	}
@@ -416,7 +621,7 @@ int ByteCode::execute(int programCounter)
 	// printi [10010010]
 	if (byteCode == 146)
 	{
-		std::cout << runtimeStack[runtimeStackPointer--].getInt( ) << std::endl;
+		std::cout << runtimeStack[runtimeStackPointer--].getValue( ) << std::endl;
 		runtimeStack.pop_back( );
 		return ++programCounter;
 	}
