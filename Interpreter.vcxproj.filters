@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Resource Files\Test Inputs">
+      <UniqueIdentifier>{e56d001f-fff4-44e3-95dd-a6818bbc30ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Test Inputs\Structured Test Inputs">
+      <UniqueIdentifier>{8cf0ebfc-4c80-4e08-b9f5-bd39df80b806}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Test Inputs\Expected Outputs">
+      <UniqueIdentifier>{b0aa1191-c59a-418d-bb66-ab4b6263035e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Interpreter.cpp">
@@ -40,64 +49,105 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="input.txt">
+    <None Include="36_jmp_test.smp">
+      <Filter>Resource Files\Test Inputs</Filter>
+    </None>
+    <None Include="40_jmpc_test.smp">
+      <Filter>Resource Files\Test Inputs</Filter>
+    </None>
+    <None Include="75_pushvf_test.smp">
+      <Filter>Resource Files\Test Inputs</Filter>
+    </None>
+    <None Include="100_add_test.smp">
+      <Filter>Resource Files\Test Inputs</Filter>
+    </None>
+    <None Include="104_sub_test.smp">
+      <Filter>Resource Files\Test Inputs</Filter>
+    </None>
+    <None Include="108_mul_test.smp">
+      <Filter>Resource Files\Test Inputs</Filter>
+    </None>
+    <None Include="112_div_test.smp">
+      <Filter>Resource Files\Test Inputs</Filter>
+    </None>
+    <None Include="132_cmpe_test.smp">
+      <Filter>Resource Files\Test Inputs</Filter>
+    </None>
+    <None Include="136_cmplt_test.smp">
+      <Filter>Resource Files\Test Inputs</Filter>
+    </None>
+    <None Include="140_cmpgt_test.smp">
+      <Filter>Resource Files\Test Inputs</Filter>
+    </None>
+    <None Include="Basics.bin">
+      <Filter>Resource Files\Test Inputs\Structured Test Inputs</Filter>
+    </None>
+    <None Include="Comparisons.bin">
+      <Filter>Resource Files\Test Inputs\Structured Test Inputs</Filter>
+    </None>
+    <None Include="Interpreter_Input.bin">
+      <Filter>Resource Files\Test Inputs\Structured Test Inputs</Filter>
+    </None>
+    <None Include="Jumps.bin">
+      <Filter>Resource Files\Test Inputs\Structured Test Inputs</Filter>
+    </None>
+    <None Include="Math.bin">
+      <Filter>Resource Files\Test Inputs\Structured Test Inputs</Filter>
+    </None>
+    <None Include="Peek_Poke.bin">
+      <Filter>Resource Files\Test Inputs\Structured Test Inputs</Filter>
+    </None>
+    <None Include="Push_Pop.bin">
+      <Filter>Resource Files\Test Inputs\Structured Test Inputs</Filter>
+    </None>
+    <None Include="Subroutines.bin">
+      <Filter>Resource Files\Test Inputs\Structured Test Inputs</Filter>
+    </None>
+    <None Include="README.md">
+      <Filter>Resource Files\Test Inputs\Structured Test Inputs</Filter>
+    </None>
+    <None Include="interpreter.pdf">
       <Filter>Resource Files</Filter>
+    </None>
+    <None Include="interpreterHints.pdf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="interpreterOverview.pdf">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="BasicsOutput.txt">
+      <Filter>Resource Files\Test Inputs\Expected Outputs</Filter>
+    </Text>
+    <Text Include="ComparisonsOutput.txt">
+      <Filter>Resource Files\Test Inputs\Expected Outputs</Filter>
+    </Text>
+    <Text Include="Interpreter_InputOutput.txt">
+      <Filter>Resource Files\Test Inputs\Expected Outputs</Filter>
+    </Text>
+    <Text Include="JumpsOutput.txt">
+      <Filter>Resource Files\Test Inputs\Expected Outputs</Filter>
+    </Text>
+    <Text Include="MathOutput.txt">
+      <Filter>Resource Files\Test Inputs\Expected Outputs</Filter>
+    </Text>
+    <Text Include="Peek_PokeOutput.txt">
+      <Filter>Resource Files\Test Inputs\Expected Outputs</Filter>
+    </Text>
+    <Text Include="Push_PopOutput.txt">
+      <Filter>Resource Files\Test Inputs\Expected Outputs</Filter>
+    </Text>
+    <Text Include="SubroutinesOutput.txt">
+      <Filter>Resource Files\Test Inputs\Expected Outputs</Filter>
+    </Text>
+    <Text Include="input.txt">
+      <Filter>Resource Files\Test Inputs</Filter>
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <None Include="36_jmp_test.smp">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="40_jmpc_test.smp">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="75_pushvf_test.smp">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="100_add_test.smp">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="104_sub_test.smp">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="108_mul_test.smp">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="112_div_test.smp">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="132_cmpe_test.smp">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="136_cmplt_test.smp">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="140_cmpgt_test.smp">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Basics.bin">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Comparisons.bin">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Interpreter_Input.bin">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Jumps.bin">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Math.bin">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Peek_Poke.bin">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Push_Pop.bin">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="Subroutines.bin">
-      <Filter>Resource Files</Filter>
-    </None>
+    <Image Include="Test_Diagram.png">
+      <Filter>Resource Files\Test Inputs\Structured Test Inputs</Filter>
+    </Image>
   </ItemGroup>
 </Project>

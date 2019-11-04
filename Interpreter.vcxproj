@@ -162,7 +162,15 @@
     <ClInclude Include="Value.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="BasicsOutput.txt" />
+    <Text Include="ComparisonsOutput.txt" />
     <Text Include="input.txt" />
+    <Text Include="Interpreter_InputOutput.txt" />
+    <Text Include="JumpsOutput.txt" />
+    <Text Include="MathOutput.txt" />
+    <Text Include="Peek_PokeOutput.txt" />
+    <Text Include="Push_PopOutput.txt" />
+    <Text Include="SubroutinesOutput.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="100_add_test.smp" />
@@ -177,12 +185,19 @@
     <None Include="75_pushvf_test.smp" />
     <None Include="Basics.bin" />
     <None Include="Comparisons.bin" />
+    <None Include="interpreter.pdf" />
+    <None Include="interpreterHints.pdf" />
+    <None Include="interpreterOverview.pdf" />
     <None Include="Interpreter_Input.bin" />
     <None Include="Jumps.bin" />
     <None Include="Math.bin" />
     <None Include="Peek_Poke.bin" />
     <None Include="Push_Pop.bin" />
+    <None Include="README.md" />
     <None Include="Subroutines.bin" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Test_Diagram.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
