@@ -153,12 +153,10 @@
   <ItemGroup>
     <ClCompile Include="ByteCode.cpp" />
     <ClCompile Include="Interpreter.cpp" />
-    <ClCompile Include="MemoryObject.cpp" />
     <ClCompile Include="Value.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ByteCode.h" />
-    <ClInclude Include="MemoryObject.h" />
     <ClInclude Include="Value.h" />
   </ItemGroup>
   <ItemGroup>
@@ -195,6 +193,8 @@
     <None Include="Push_Pop.bin" />
     <None Include="README.md" />
     <None Include="Subroutines.bin" />
+    <None Include="Unknown_Test_1.bin" />
+    <None Include="Unknown_Test_2.bin" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Test_Diagram.png" />

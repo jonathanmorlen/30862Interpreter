@@ -2,10 +2,9 @@
 #include <ostream>
 #include <vector>
 
-#include "MemoryObject.h"
 #include "Value.h"
 
-class ByteCode: public MemoryObject
+class ByteCode
 {
 public:
 	// Constructor(s) and Destructor(s)
@@ -13,6 +12,7 @@ public:
 	virtual ~ByteCode() = default;
 
 	// Variables
+	int value;
 	static int programCounter;
 	static int framePointerStackPointer;
 	static int runtimeStackPointer;

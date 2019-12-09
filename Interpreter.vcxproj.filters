@@ -27,9 +27,6 @@
     <ClCompile Include="Interpreter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MemoryObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ByteCode.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -38,9 +35,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MemoryObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ByteCode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -79,9 +73,6 @@
     <None Include="140_cmpgt_test.smp">
       <Filter>Resource Files\Test Inputs</Filter>
     </None>
-    <None Include="Basics.bin">
-      <Filter>Resource Files\Test Inputs\Structured Test Inputs</Filter>
-    </None>
     <None Include="Comparisons.bin">
       <Filter>Resource Files\Test Inputs\Structured Test Inputs</Filter>
     </None>
@@ -113,6 +104,15 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="interpreterOverview.pdf">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="Unknown_Test_1.bin">
+      <Filter>Resource Files\Test Inputs\Structured Test Inputs</Filter>
+    </None>
+    <None Include="Unknown_Test_2.bin">
+      <Filter>Resource Files\Test Inputs\Structured Test Inputs</Filter>
+    </None>
+    <None Include="Basics.bin">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

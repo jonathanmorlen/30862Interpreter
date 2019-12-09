@@ -1,9 +1,7 @@
 #pragma once
 #include <ostream>
 
-#include "MemoryObject.h"
-
-class Value: public MemoryObject
+class Value
 {
 public:
 	// Constructor(s) and Destructor(s)

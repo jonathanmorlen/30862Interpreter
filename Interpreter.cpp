@@ -5,7 +5,6 @@
 #include <vector>
 #include <fstream>
 
-#include "MemoryObject.h"
 #include "ByteCode.h"
 #include "Value.h"
 
